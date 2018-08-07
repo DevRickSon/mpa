@@ -7,6 +7,7 @@ class App extends Component{
             <Fragment>
                 <Nav current="home" />
                 <h1>Home</h1>
+                <h2>Hello React !!</h2>
             </Fragment>
         );
     }

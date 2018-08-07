@@ -1,0 +1,14 @@
+/*쇼룸 상세페이지*/
+.brand_view.detail{padding:50px 0 55px;}
+.brand_view ul:after { content:""; display:block; height:0; clear:both; visibility:hidden; }
+.brand_view.detail .paging{margin-top:50px;}
+.brand_view.detail .paging .btn_prv,.brand_view.detail .paging .btn_nxt{display:none;}
+.brand_view.detail .paging a{width:28px;height:28px;padding:0;line-height:30px;color:#9b9b9b}
+.brand_view.detail .paging a.current{color:#fff;background:#4a4a4a;}
+.show_detail .show_wrap{margin:0 auto;}
+.show_wrap{position:relative;width:100%;margin:25px auto 0 auto;}
+.total .show_wrap{background:none;}
+.show_wrap:after { content:""; display:block; height:0; clear:both; visibility:hidden; }
+
+/*등록차량 액자리스트*/
+.brand_view.detail .terms_list ul{overflow:hidden;}
