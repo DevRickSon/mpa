@@ -1,16 +1,14 @@
 React Boilerplate
 =================
-----
-## 필수 설치
--Nodejs (https://nodejs.org/en/)
 
-## 패키지 관리(선택사항)
----
--yarn (https://yarnpkg.com/en/docs/install#mac-stable)
+## 필수 설치 ##
+- Nodejs (https://nodejs.org/en/)
 
+## 패키지 관리(선택사항) ##
+- yarn (https://yarnpkg.com/en/docs/install#mac-stable)
 
-## 사용법
--의존모듈 설치
+## 사용법 ##
+- 의존모듈 설치
 ```sh
 yarn install
 ```
@@ -18,7 +16,7 @@ or
 ```sh
 npm install
 ```
--로컬 개발
+- 로컬 개발
 ```sh
 yarn start
 ```
@@ -26,7 +24,7 @@ or
 ```sh
 npm start
 ```
--유닛 테스트
+- 유닛 테스트
 ```sh
 yarn test
 ```
@@ -34,7 +32,7 @@ or
 ```sh
 npm run test
 ```
--배포 빌드
+- 배포 빌드
 ```sh
 yarn build
 ```
@@ -43,9 +41,8 @@ or
 yarn run build
 ```
 
-## 구조
-
-https://docs.google.com/drawings/d/1GJzhFXl6rxH-B42WwMvMb2f74k7o2-gtKcIgYLr1usY/edit?usp=sharing
+## 구조 ##
+- https://docs.google.com/drawings/d/1GJzhFXl6rxH-B42WwMvMb2f74k7o2-gtKcIgYLr1usY/edit?usp=sharing
 ```
 build/
     static/
