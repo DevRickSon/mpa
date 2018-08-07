@@ -1,10 +1,14 @@
 ## React Boilerplate
 
 ## 필수 설치
+
 * Nodejs (https://nodejs.org/en/)
 
+
 ## 패키지 관리(선택사항)
+
 * yarn (https://yarnpkg.com/en/docs/install#mac-stable)
+
 
 ## 사용법
 
@@ -45,8 +49,8 @@ yarn run build
 ```
 
 ## 구조
-https://docs.google.com/drawings/d/1GJzhFXl6rxH-B42WwMvMb2f74k7o2-gtKcIgYLr1usY/edit?usp=sharing
 
+https://docs.google.com/drawings/d/1GJzhFXl6rxH-B42WwMvMb2f74k7o2-gtKcIgYLr1usY/edit?usp=sharing
 ```
 build/
     static/
@@ -69,7 +73,7 @@ public/
 
 src/
     api [mock server 정보]
-    client/
+    client/ [client 최상위 component]
         name1/
             Root.js
         name2/
@@ -77,20 +81,17 @@ src/
         ...
         index/
             Root.js
-    components/
-        presentational componets...
-    containers/
-        container components...(store)
-    pages/
-        route components...
+    components [presentational componets]
+    containers [container components (store 연결)]
+    pages [route componets]
     server/
         name1/
-            ssr
+            export name1 ssr
         name2/
-            ssr
+            export name2 ssr
         ...
         index/
-            ssr
+            export index ssr
     shared/
         name1/
             app.js
