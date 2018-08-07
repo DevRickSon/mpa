@@ -2,6 +2,7 @@ React Boilerplate
 =================
 
 ### 필수 설치
+---
 - Nodejs (https://nodejs.org/en/)
 
 ### 패키지 관리(선택사항)
