@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './shared/hottip/App';
+import Root from 'client/hottip/Root';
 
-ReactDOM.render(
-    <App />, document.getElementById('root')
-);
+ReactDOM.render(<Root />, document.getElementById('root'));
