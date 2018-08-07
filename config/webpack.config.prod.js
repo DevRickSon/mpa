@@ -47,7 +47,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
   : {};
 
 let entry = {
-  vender: [
+  vendor: [
       require.resolve('./polyfills'),
       'react',
       'react-dom'
@@ -141,19 +141,27 @@ let plugins = [
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor'
+    })
 ];
 const htmlItems = paths.appHtml;
 
 for(let i=0; i<htmlItems.length; i++){
-    const key = path.basename(htmlItems[i]).replace('.html', '');
+    const item = htmlItems[i];
+    const tempArr = path.dirname(item).split('/');
+    const key = tempArr[tempArr.length - 1];
+    const basename = path.basename(item);
+    const filename = key === 'public' ? basename : `${key}/${basename}`;
+    const jsName = key === 'public' ? 'index' : key;
 
     plugins.push(
         // Generates an `index.html` file with the <script> injected.
         new HtmlWebpackPlugin({
             inject: true,
-            template: htmlItems[i],
-            filename: path.basename(htmlItems[i]),
-            chunks: ['vender', key],
+            template: item,
+            filename: filename,
+            chunks: ['vendor', jsName],
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
@@ -336,6 +344,59 @@ module.exports = {
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract(
+                    Object.assign(
+                        {
+                            fallback: {
+                                loader: require.resolve('style-loader'),
+                                options: {
+                                    hmr: false,
+                                },
+                            },
+                            use: [
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 1,
+                                        minimize: true,
+                                        sourceMap: shouldUseSourceMap,
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        // Necessary for external CSS imports to work
+                                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                                        ident: 'postcss',
+                                        plugins: () => [
+                                            require('postcss-flexbugs-fixes'),
+                                            autoprefixer({
+                                                browsers: [
+                                                    '>1%',
+                                                    'last 4 versions',
+                                                    'Firefox ESR',
+                                                    'not ie < 9', // React doesn't support IE8 anyway
+                                                ],
+                                                flexbox: 'no-2009',
+                                            }),
+                                        ],
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('sass-loader'),
+                                    options: {
+                                        includePaths: [paths.styles]
+                                    }
+                                }
+                            ],
+                        },
+                        extractTextPluginOptions
+                    )
+                ),
+                // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+            },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules

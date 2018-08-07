@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import Nav from 'components/Nav';
 
 class App extends Component{
     render(){
         return (
-            <h1>Show Room</h1>
+            <Fragment>
+                <Nav current="showroom" />
+                <h1>Show Room</h1>
+            </Fragment>
         );
     }
 }

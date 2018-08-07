@@ -40,7 +40,7 @@ function getServedPath(appPackageJson) {
 }
 
 let htmlArr = [];
-glob.sync('public/**.html').forEach(function(item, i){
+glob.sync('public/**/**.html').forEach(function(item, i){
     htmlArr.push(resolveApp(item));
 });
 
@@ -63,4 +63,5 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  styles: resolveApp('src/styles')
 };
